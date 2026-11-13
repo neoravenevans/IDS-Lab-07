@@ -10,7 +10,6 @@ output: html_document
 ```{r load-packages, message=FALSE, echo=TRUE}
 library(tidyverse)
 library(tidymodels)
-
 ```
 
 ## Data set: college recent grads
@@ -26,7 +25,20 @@ glimpse(college_grad_df)
 # Exercise 1: Exploratory Data Analysis
 
 ```{r}
-#your code here
+college_grad_df %>%
+  ggplot(aes(x = median, fill = major_category)) +
+  geom_histogram() + 
+  labs(title = "Histogram of median",
+       x = "Median income",
+       y = "Frequency")
+
+college_grad_df %>%
+  ggplot(aes(x = major_category, fill = major_category)) +
+  geom_bar() + 
+  labs(title = "Bar chart of major category",
+       x = "Major Category",
+       y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
 *Your explanation*
